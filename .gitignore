@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+venv/
+
+# Streamlit
+.streamlit/
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.log
+*.bak
+.idea/
+.vscode/
+
+# AWS or cloud secrets
+*.pem
+*.key
+.aws/
+
+# Large data / temp files
+*.zip
+*.tar.gz
+*.sqlite
+tmp/
+
+# IMPORTANT: Do NOT upload any AWS credentials, .env files, or secret tokens.
+# Judges don't need those to run the project — use placeholders or environment variables in code. 
