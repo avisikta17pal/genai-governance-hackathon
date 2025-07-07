@@ -83,6 +83,10 @@ if 'session_id' not in st.session_state:
 # Backend API configuration
 BACKEND_URL = "http://localhost:8000"
 
+# Check if running in Streamlit Cloud
+import os
+DEMO_MODE = os.getenv("DEMO_MODE", "true").lower() == "true"
+
 def login_user(username: str, password: str) -> bool:
     """Authenticate user with backend"""
     try:
