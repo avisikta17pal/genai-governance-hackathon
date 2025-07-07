@@ -114,45 +114,23 @@ streamlit run app.py
 - **Performance Tests** for scalability
 - **Security Tests** for vulnerabilities
 
-## 🎬 **Demo Script**
+## 🌐 **Streamlit Community Cloud Deployment**
 
-### **Opening (30 seconds)**
-> "Welcome to our GenAI Governance System - a production-ready solution for AI governance and compliance. This system features 6 specialized agents, real AWS integration, and comprehensive compliance frameworks."
+### **Live Demo**
+- **🌐 Streamlit App**: [Deployed on Streamlit Cloud](https://genai-governance-hackathon-cnyxdc5iqhcgbmzuj3jfss.streamlit.app)
+- **📁 GitHub Repository**: https://github.com/avisikta17pal/genai-governance-hackathon
+- **🔧 Main File**: `streamlit_app.py`
 
-### **Demo Flow (5 minutes)**
+### **Deployment Files**
+- `streamlit_app.py` - Main entry point for Streamlit Cloud
+- `requirements.txt` - Dependencies for Streamlit deployment
+- `.streamlit/config.toml` - Streamlit configuration
 
-#### **1. Login & Dashboard (1 minute)**
-- Login with `admin` / `admin`
-- Show the beautiful dashboard with real-time metrics
-- Point out: "Real-time system health, 6 active agents, compliance score"
-
-#### **2. AI Chat with Governance (2 minutes)**
-- Go to "GenAI Process" page
-- Enter: "Generate a marketing email for our new product"
-- Show the governance process:
-  - ✅ Input validation by Prompt Guard
-  - ✅ Risk assessment by Policy Enforcer
-  - ✅ Output review by Output Auditor
-  - ✅ Audit logging by Audit Logger
-- Point out: "Real-time governance processing with 98% compliance rate"
-
-#### **3. Audit Logs (1 minute)**
-- Go to "Audit Logs" page
-- Show comprehensive logging: "Every action is logged for regulatory compliance"
-- Demonstrate search and filter features
-- Point out: "Complete audit trail for GDPR, HIPAA, SOX compliance"
-
-#### **4. Analytics Dashboard (1 minute)**
-- Go to "Analytics" page
-- Show charts and metrics: "Real-time analytics with compliance scoring"
-- Point out: "Risk assessment, policy violations, system performance"
-
-#### **5. Policy Management (30 seconds)**
-- Go to "Settings" page (admin only)
-- Show policy configuration: "Dynamic policy enforcement with context-aware rules"
-
-### **Closing (30 seconds)**
-> "This system is production-ready with real AWS integration, enterprise-grade security, and comprehensive compliance features. It's designed to scale from startups to Fortune 500 companies."
+### **Deploy Your Own**
+1. Fork the repository
+2. Connect to Streamlit Cloud
+3. Set main file path to `streamlit_app.py`
+4. Deploy automatically
 
 ## 📋 **Installation & Setup**
 
@@ -166,7 +144,7 @@ streamlit run app.py
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/avisikta17pal/genai-governance-hackathon
    cd genai-governance-hackathon
    ```
 
@@ -196,33 +174,6 @@ streamlit run app.py
    - Frontend: http://localhost:8501
    - Backend API: http://localhost:8000
    - API Documentation: http://localhost:8000/docs
-
-## 🌐 **Streamlit Community Cloud Deployment**
-
-### **Deploy to Streamlit Cloud**
-
-1. **Push your code to GitHub**
-   ```bash
-   git add .
-   git commit -m "Ready for Streamlit deployment"
-   git push origin main
-   ```
-
-2. **Deploy on Streamlit Community Cloud**
-   - Go to [share.streamlit.io](https://share.streamlit.io/deploy)
-   - **Repository**: `https://github.com/avisikta17pal/genai-governance-hackathon`
-   - **Branch**: `main`
-   - **Main file path**: `streamlit_app.py`
-   - **App URL**: `genai-governance-hackathon-cnyxdc5iqhcgbmzuj3jfss.streamlit.app`
-
-3. **Environment Variables** (if needed)
-   - Add any AWS credentials or API keys in the Streamlit Cloud settings
-   - Note: This demo version works without real AWS credentials
-
-### **Deployment Files**
-- `streamlit_app.py` - Main entry point for Streamlit Cloud
-- `requirements-streamlit.txt` - Dependencies for Streamlit deployment
-- `.streamlit/config.toml` - Streamlit configuration
 
 ## 🔧 **Technical Implementation**
 
@@ -264,6 +215,7 @@ streamlit run app.py
 - ✅ **AWS ECS Deployment** for container orchestration
 - ✅ **AWS Lambda Deployment** for serverless
 - ✅ **CloudFormation Templates** for infrastructure
+- ✅ **Streamlit Community Cloud** for easy deployment
 
 ### **Scalability Features**
 - ✅ **Auto-scaling Configuration** for load handling
@@ -334,36 +286,9 @@ S3_BUCKET_NAME=genai-governance-audit-logs
 BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
 ```
 
-### AWS Services Setup
+## 🎮 **Usage**
 
-1. **Create DynamoDB Table**
-   ```bash
-   aws dynamodb create-table \
-     --table-name genai-governance-audit-logs \
-     --attribute-definitions AttributeName=audit_id,AttributeType=S \
-     --key-schema AttributeName=audit_id,KeyType=HASH \
-     --billing-mode PAY_PER_REQUEST
-   ```
-
-2. **Create S3 Bucket**
-   ```bash
-   aws s3 mb s3://genai-governance-audit-logs
-   ```
-
-3. **Configure IAM Roles**
-   - Create IAM role with Bedrock, DynamoDB, S3, and KMS permissions
-   - Attach appropriate policies for your use case
-
-## 🎮 Usage
-
-### Demo Credentials
-
-- **Admin**: username: `admin`, password: `admin`
-- **Manager**: username: `manager`, password: `manager`
-- **Analyst**: username: `analyst`, password: `analyst`
-- **User**: username: `user`, password: `user`
-
-### Features Walkthrough
+### **Features Walkthrough**
 
 1. **Dashboard**: View system metrics, compliance rates, and risk distributions
 2. **AI Chat**: Interact with AI through the governance system
@@ -372,9 +297,9 @@ BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
 5. **Policy Management**: Configure governance policies (Admin only)
 6. **Feedback**: Submit anonymous feedback for system improvement
 
-## 🔍 API Documentation
+## 🔍 **API Documentation**
 
-### Core Endpoints
+### **Core Endpoints**
 
 - `POST /api/v1/genai/process` - Process GenAI requests through governance
 - `POST /api/v1/feedback/submit` - Submit user feedback
@@ -382,7 +307,7 @@ BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
 - `POST /api/v1/policy/update` - Update governance policies (Admin)
 - `GET /api/v1/analytics/dashboard` - Get analytics data
 
-### Example API Usage
+### **Example API Usage**
 
 ```python
 import requests
@@ -401,9 +326,9 @@ response = requests.post(
 print(response.json())
 ```
 
-## 🧪 Testing
+## 🧪 **Testing**
 
-### Run Tests
+### **Run Tests**
 
 ```bash
 # Install test dependencies
@@ -428,7 +353,7 @@ pytest -v --tb=short
 pytest -n auto
 ```
 
-### Test Coverage
+### **Test Coverage**
 
 The test suite covers:
 - ✅ **API Endpoints**: All REST endpoints tested
@@ -439,37 +364,9 @@ The test suite covers:
 - ✅ **Data Validation**: Input/output validation
 - ✅ **Security**: Security controls verification
 
-### Test Results
+## 📊 **Performance Metrics**
 
-```bash
-# Example test output
-============================= test session starts ==============================
-platform win32 -- Python 3.9.0, pytest-8.4.1, pluggy-1.6.0
-collected 25 items
-
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_health_endpoint PASSED
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_root_endpoint PASSED
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_genai_process_endpoint_success PASSED
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_genai_process_endpoint_high_risk PASSED
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_feedback_submission PASSED
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_audit_logs_retrieval PASSED
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_policy_update_admin_only PASSED
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_analytics_dashboard_access_control PASSED
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_authentication_required PASSED
-backend/tests/test_integration.py::TestGenAIGovernanceSystem::test_invalid_token PASSED
-backend/tests/test_integration.py::TestAgentIntegration::test_prompt_guard_agent PASSED
-backend/tests/test_integration.py::TestAgentIntegration::test_output_auditor_agent PASSED
-backend/tests/test_integration.py::TestAgentIntegration::test_policy_enforcer_agent PASSED
-backend/tests/test_integration.py::TestAgentIntegration::test_audit_logger_agent PASSED
-backend/tests/test_integration.py::TestAgentIntegration::test_advisory_agent PASSED
-backend/tests/test_integration.py::TestAgentIntegration::test_feedback_agent PASSED
-
-============================== 25 passed in 12.34s ==============================
-```
-
-## 📊 Performance Metrics
-
-### System Performance
+### **System Performance**
 
 - **Response Time**: < 200ms average
 - **Throughput**: 1000+ requests/minute
@@ -477,16 +374,16 @@ backend/tests/test_integration.py::TestAgentIntegration::test_feedback_agent PAS
 - **Compliance Rate**: 98%+
 - **Risk Detection**: 95% accuracy
 
-### Compliance Metrics
+### **Compliance Metrics**
 
 - **GDPR Compliance**: 95%
 - **HIPAA Compliance**: 98%
 - **SOX Compliance**: 92%
 - **ISO 42001**: 94%
 
-## 🔒 Security Features
+## 🔒 **Security Features**
 
-### Data Protection
+### **Data Protection**
 
 - **Encryption at Rest**: AES-256 encryption for all stored data
 - **Encryption in Transit**: TLS 1.3 for all communications
@@ -494,194 +391,12 @@ backend/tests/test_integration.py::TestAgentIntegration::test_feedback_agent PAS
 - **Access Control**: Role-based access control (RBAC)
 - **Audit Logging**: Comprehensive audit trails for all actions
 
-### Privacy Protection
+### **Privacy Protection**
 
 - **Data Minimization**: Only collect necessary data
 - **Anonymization**: Anonymous feedback collection
 - **Consent Management**: Explicit user consent tracking
 - **Right to be Forgotten**: GDPR compliance implementation
-
-## 🚀 Deployment
-
-### Local Development
-
-1. **Start the backend server**
-   ```bash
-   cd backend
-   uvicorn main:app --reload --host 0.0.0.0 --port 8000
-   ```
-
-2. **Start the frontend application (Choose one)**
-
-   **Option A: React Frontend (Recommended)**
-   ```bash
-   # Using the startup script (recommended)
-   ./scripts/start-frontend.sh  # Linux/Mac
-   scripts/start-frontend.bat    # Windows
-   
-   # Or manually
-   cd frontend
-   npm install
-   npm start
-   ```
-
-   **Option B: Streamlit Frontend**
-   ```bash
-   cd frontend
-   streamlit run app.py
-   ```
-
-3. **Access the application**
-   - React Frontend: http://localhost:3000 (Option A)
-   - Streamlit Frontend: http://localhost:8501 (Option B)
-   - Backend API: http://localhost:8000
-   - API Documentation: http://localhost:8000/docs
-
-### Docker Deployment
-
-1. **Build and run with Docker Compose**
-   ```bash
-   # Build and start all services
-   docker-compose up --build
-   
-   # Run in background
-   docker-compose up -d --build
-   
-   # View logs
-   docker-compose logs -f
-   
-   # Stop services
-   docker-compose down
-   ```
-
-2. **Access the application**
-   - Frontend: http://localhost:8501
-   - Backend API: http://localhost:8000
-   - Redis: localhost:6379 (optional)
-   - PostgreSQL: localhost:5432 (optional)
-
-### AWS Deployment
-
-#### Prerequisites
-- AWS CLI installed and configured
-- Docker installed
-- Appropriate AWS permissions (IAM, CloudFormation, Lambda, etc.)
-
-#### Quick Deployment
-
-1. **Deploy to AWS**
-   ```bash
-   # Make deployment script executable
-   chmod +x scripts/deploy-aws.sh
-   
-   # Deploy to dev environment
-   ./scripts/deploy-aws.sh dev us-east-1
-   
-   # Deploy to production
-   ./scripts/deploy-aws.sh prod us-east-1
-   ```
-
-2. **Deployment Output**
-   ```
-   [INFO] Starting deployment for environment: dev
-   [INFO] AWS Region: us-east-1
-   [INFO] Stack Name: genai-governance-dev
-   [INFO] Prerequisites check passed!
-   [INFO] Building Docker images...
-   [INFO] Docker images built successfully!
-   [INFO] Deploying infrastructure with CloudFormation...
-   [INFO] Infrastructure deployed successfully!
-   [INFO] Deployment URLs:
-   [INFO] API Gateway: https://abc123.execute-api.us-east-1.amazonaws.com/dev
-   [INFO] Frontend: https://d123456789.cloudfront.net
-   [INFO] DynamoDB Table: genai-governance-audit-logs-dev
-   [INFO] S3 Bucket: genai-governance-audit-logs-dev-123456789
-   [INFO] Deployment completed successfully!
-   ```
-
-#### Manual Deployment
-
-1. **Deploy Infrastructure**
-   ```bash
-   # Package CloudFormation template
-   aws cloudformation package \
-     --template-file infra/cloudformation.yaml \
-     --s3-bucket your-artifacts-bucket \
-     --output-template-file infra/cloudformation-packaged.yaml
-   
-   # Deploy stack
-   aws cloudformation deploy \
-     --template-file infra/cloudformation-packaged.yaml \
-     --stack-name genai-governance-dev \
-     --parameter-overrides Environment=dev ProjectName=genai-governance \
-     --capabilities CAPABILITY_NAMED_IAM
-   ```
-
-2. **Deploy Application**
-   ```bash
-   # Build Docker images
-   docker build -t genai-governance-backend:dev .
-   docker build -f Dockerfile.frontend -t genai-governance-frontend:dev .
-   
-   # Push to ECR (if using ECS)
-   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 123456789.dkr.ecr.us-east-1.amazonaws.com
-   docker tag genai-governance-backend:dev 123456789.dkr.ecr.us-east-1.amazonaws.com/genai-governance-backend:dev
-   docker push 123456789.dkr.ecr.us-east-1.amazonaws.com/genai-governance-backend:dev
-   ```
-
-3. **Access deployed application**
-   - **API Gateway URL**: `https://[api-id].execute-api.[region].amazonaws.com/[stage]`
-   - **Frontend URL**: `https://[cloudfront-domain].cloudfront.net`
-   - **CloudWatch Dashboard**: Available in AWS Console
-
-### Deployment Verification
-
-1. **Health Check**
-   ```bash
-   curl https://[api-id].execute-api.us-east-1.amazonaws.com/dev/health
-   ```
-
-2. **API Documentation**
-   ```bash
-   curl https://[api-id].execute-api.us-east-1.amazonaws.com/dev/docs
-   ```
-
-3. **Test API Endpoint**
-   ```bash
-   curl -X POST https://[api-id].execute-api.us-east-1.amazonaws.com/dev/api/v1/genai/process \
-     -H "Authorization: Bearer your-token" \
-     -H "Content-Type: application/json" \
-     -d '{"prompt": "What is AI governance?", "user_id": "test_user"}'
-   ```
-
-### Production Considerations
-
-- **Auto-scaling**: Lambda functions scale automatically
-- **Monitoring**: CloudWatch dashboards and alerts
-- **Backup**: Automated DynamoDB backups
-- **Disaster Recovery**: Multi-region deployment
-- **Security**: Regular security audits and penetration testing
-- **Compliance**: Automated compliance reporting
-
-## 🧪 **Testing**
-
-### **Run Tests**
-```powershell
-# Run all tests
-cd backend
-python -m pytest tests/ -v
-
-# Run specific test file
-python -m pytest tests/test_integration.py -v
-```
-
-### **Test Coverage**
-- ✅ **100% Unit Test Coverage** for all agents
-- ✅ **Integration Tests** for all API endpoints
-- ✅ **Authentication Tests** with different roles
-- ✅ **Error Handling Tests** for edge cases
-- ✅ **Performance Tests** for scalability
-- ✅ **Security Tests** for vulnerabilities
 
 ## 🎉 **Success Metrics**
 
@@ -714,6 +429,7 @@ python -m pytest tests/test_integration.py -v
 - **`HACKATHON_SUMMARY.md`** - Project overview and technical details
 - **`DEPLOYMENT.md`** - AWS deployment guide
 - **`ARCHITECTURE.md`** - System architecture documentation
+- **`STREAMLIT_GUIDE.md`** - Streamlit deployment guide
 
 ## 🚀 **Ready for Hackathon Success!**
 
@@ -727,6 +443,7 @@ Your GenAI Governance System is **production-ready** and will **impress the judg
 6. **Scalable Architecture** - Ready for production
 7. **Comprehensive Testing** - 100% test coverage
 8. **Real Compliance Features** - GDPR, HIPAA, SOX support
+9. **Live Demo** - Deployed on Streamlit Cloud
 
 **Good luck! You've built something amazing! 🏆**
 
@@ -738,7 +455,7 @@ For questions or issues during the hackathon:
 - **Backend Issues**: Check http://localhost:8000/health
 - **Frontend Issues**: Restart Streamlit with `streamlit run app.py`
 - **Documentation**: See `FINAL_SETUP_GUIDE.md` for troubleshooting
-- **Demo Script**: Follow the demo flow in this README
+- **Live Demo**: https://genai-governance-hackathon-cnyxdc5iqhcgbmzuj3jfss.streamlit.app
 
 **You're ready to win! 🏆**
 
@@ -783,17 +500,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Regulatory Confidence**: Comprehensive audit trails and reporting
 - **User Trust**: Transparent and ethical AI usage
 - **Scalable Solution**: Adaptable to various industries and regulations
-
-## 📞 Support
-
-For questions or support, please contact:
-- Email: support@genai-governance.com
-- Documentation: [Link to documentation]
-- Issues: [GitHub Issues](https://github.com/your-repo/issues)
-
----
-
-**Built with ❤️ for the GenAI Hackathon 2025** 
 
 ## ⚠️ Environment Variables & Credentials
 
@@ -845,4 +551,8 @@ pytest backend/tests --maxfail=3 --disable-warnings -q
 ```sh
 export PYTHONPATH=.
 pytest backend/tests --maxfail=3 --disable-warnings -q
-``` 
+```
+
+---
+
+**Built with ❤️ for the GenAI Hackathon 2025** 
