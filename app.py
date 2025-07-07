@@ -52,4 +52,4 @@ if __name__ == "__main__":
     st.markdown("- **Policy Enforcer:** Applies context-specific rules")
     st.markdown("- **Audit Logger:** Records all interactions")
     st.markdown("- **Advisory Agent:** Provides guidance")
-    st.markdown("- **Feedback Agent:** Processes user feedback") 
+    st.markdown("- **Feedback Agent:** Processes user feedback")  
