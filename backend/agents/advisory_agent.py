@@ -1,3 +1,4 @@
+# pyright: reportMissingImports=false
 import logging
 import boto3
 from typing import Dict, List

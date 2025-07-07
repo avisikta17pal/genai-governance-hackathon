@@ -1,3 +1,4 @@
+# pyright: reportMissingImports=false
 """
 GenAI Governance System - Streamlit App Entry Point
 This file serves as the entry point for Streamlit Community Cloud deployment.
@@ -8,11 +9,12 @@ import streamlit as st
 import requests
 import json
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from typing import Dict, List, Optional
+import random
 
 # Page configuration
 st.set_page_config(
