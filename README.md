@@ -197,6 +197,33 @@ streamlit run app.py
    - Backend API: http://localhost:8000
    - API Documentation: http://localhost:8000/docs
 
+## 🌐 **Streamlit Community Cloud Deployment**
+
+### **Deploy to Streamlit Cloud**
+
+1. **Push your code to GitHub**
+   ```bash
+   git add .
+   git commit -m "Ready for Streamlit deployment"
+   git push origin main
+   ```
+
+2. **Deploy on Streamlit Community Cloud**
+   - Go to [share.streamlit.io](https://share.streamlit.io/deploy)
+   - **Repository**: `https://github.com/avisikta17pal/genai-governance-hackathon`
+   - **Branch**: `main`
+   - **Main file path**: `streamlit_app.py`
+   - **App URL**: `genai-governance-hackathon-cnyxdc5iqhcgbmzuj3jfss.streamlit.app`
+
+3. **Environment Variables** (if needed)
+   - Add any AWS credentials or API keys in the Streamlit Cloud settings
+   - Note: This demo version works without real AWS credentials
+
+### **Deployment Files**
+- `streamlit_app.py` - Main entry point for Streamlit Cloud
+- `requirements-streamlit.txt` - Dependencies for Streamlit deployment
+- `.streamlit/config.toml` - Streamlit configuration
+
 ## 🔧 **Technical Implementation**
 
 ### **Backend (FastAPI)**
