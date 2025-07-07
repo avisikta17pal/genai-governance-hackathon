@@ -124,8 +124,21 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
         
         # Simulate different responses based on prompt content
         prompt_lower = prompt.lower()
+
+        # High-risk keywords detection
+        high_risk_keywords = [
+            "hack", "exploit", "phishing", "malware", "virus", "attack", "cyber", "illegal",
+            "bomb", "weapon", "kill", "violence", "harm", "backdoor", "breach", "ddos"
+        ]
+        if any(word in prompt_lower for word in high_risk_keywords):
+            response = (
+                "I cannot provide assistance with harmful, illegal, or dangerous content. "
+                "Please ensure your requests are appropriate and comply with our usage policies."
+            )
+            risk_level = 'high'
+            compliance_status = 'blocked'
         
-        if 'diabetes' in prompt_lower and ('symptom' in prompt_lower or 'treat' in prompt_lower):
+        elif 'diabetes' in prompt_lower and ('symptom' in prompt_lower or 'treat' in prompt_lower):
             response = """**Diabetes Symptoms and Treatment Information:**
 
 **Common Symptoms:**
@@ -221,11 +234,6 @@ Best regards,
 ⚠️ **Legal Disclaimer:** This information is for educational purposes only and does not constitute legal advice."""
             risk_level = 'medium'
             compliance_status = 'needs_review'
-            
-        elif 'harm' in prompt_lower or 'violence' in prompt_lower:
-            response = "I cannot provide assistance with harmful or violent content. Please ensure your requests are appropriate and comply with our usage policies."
-            risk_level = 'high'
-            compliance_status = 'blocked'
             
         else:
             response = f"""Here's a helpful response to your query: '{prompt}'
