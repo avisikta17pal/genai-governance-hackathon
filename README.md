@@ -793,7 +793,7 @@ For questions or support, please contact:
 
 ---
 
-**Built with ❤️ for the GenAI Hackathon 2025**
+**Built with ❤️ for the GenAI Hackathon 2025** 
 
 ## ⚠️ Environment Variables & Credentials
 
