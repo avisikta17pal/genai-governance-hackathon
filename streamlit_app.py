@@ -125,24 +125,121 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
         # Simulate different responses based on prompt content
         prompt_lower = prompt.lower()
         
-        if 'medical' in prompt_lower or 'health' in prompt_lower:
-            response = "I can provide general health information, but please consult a healthcare professional for specific medical advice. This is for informational purposes only."
+        if 'diabetes' in prompt_lower and ('symptom' in prompt_lower or 'treat' in prompt_lower):
+            response = """**Diabetes Symptoms and Treatment Information:**
+
+**Common Symptoms:**
+- Frequent urination (polyuria)
+- Increased thirst (polydipsia)
+- Unexplained weight loss
+- Fatigue and weakness
+- Blurred vision
+- Slow-healing wounds
+- Tingling or numbness in hands/feet
+
+**Treatment Approaches:**
+- **Type 1 Diabetes**: Insulin therapy, blood sugar monitoring, diet management
+- **Type 2 Diabetes**: Lifestyle changes, oral medications, insulin if needed
+- **Gestational Diabetes**: Diet control, exercise, monitoring
+
+**Lifestyle Management:**
+- Regular exercise
+- Healthy diet (low glycemic index foods)
+- Blood sugar monitoring
+- Regular medical check-ups
+
+⚠️ **Important Disclaimer:** This is general educational information only. Always consult a healthcare professional for proper diagnosis and personalized treatment plans."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        elif 'medical' in prompt_lower or 'health' in prompt_lower:
+            response = """I can provide general health information, but please consult a healthcare professional for specific medical advice. This is for informational purposes only.
+
+**For medical questions, I recommend:**
+- Consulting your primary care physician
+- Visiting a healthcare provider
+- Using reliable medical websites (Mayo Clinic, WebMD, etc.)
+- Calling emergency services for urgent concerns
+
+⚠️ **Medical Disclaimer:** This information is for educational purposes only and should not replace professional medical advice."""
             risk_level = 'medium'
             compliance_status = 'needs_review'
+            
         elif 'financial' in prompt_lower or 'investment' in prompt_lower:
-            response = "I can provide general financial education, but please consult a licensed financial advisor for specific investment advice. Past performance does not guarantee future results."
+            response = """I can provide general financial education, but please consult a licensed financial advisor for specific investment advice. Past performance does not guarantee future results.
+
+**General Financial Tips:**
+- Diversify your investments
+- Consider your risk tolerance
+- Plan for long-term goals
+- Emergency fund (3-6 months expenses)
+- Regular portfolio review
+
+⚠️ **Financial Disclaimer:** This is educational content only. Consult a licensed financial advisor for personalized advice."""
             risk_level = 'medium'
             compliance_status = 'needs_review'
+            
         elif 'legal' in prompt_lower or 'law' in prompt_lower:
-            response = "I can provide general legal information, but please consult a licensed attorney for specific legal advice. This is for informational purposes only."
+            response = """I can provide general legal information, but please consult a licensed attorney for specific legal advice. This is for informational purposes only.
+
+**General Legal Resources:**
+- Legal aid organizations
+- State bar associations
+- Public legal information websites
+- Law libraries
+
+⚠️ **Legal Disclaimer:** This information is for educational purposes only and does not constitute legal advice."""
             risk_level = 'medium'
             compliance_status = 'needs_review'
+            
         elif 'harm' in prompt_lower or 'violence' in prompt_lower:
             response = "I cannot provide assistance with harmful or violent content. Please ensure your requests are appropriate and comply with our usage policies."
             risk_level = 'high'
             compliance_status = 'blocked'
+            
+        elif 'marketing' in prompt_lower or 'email' in prompt_lower:
+            response = """**Marketing Email Template:**
+
+**Subject Line:** [Your Product] - Transform Your [Benefit]
+
+**Email Body:**
+Dear [Customer Name],
+
+We're excited to introduce [Your Product], designed to [main benefit].
+
+**Key Features:**
+- [Feature 1] - [Benefit]
+- [Feature 2] - [Benefit]
+- [Feature 3] - [Benefit]
+
+**Call to Action:** [Clear, compelling action]
+
+Best regards,
+[Your Name]
+[Company Name]
+
+**Tips for Effective Marketing:**
+- Personalize content
+- Clear value proposition
+- Strong call-to-action
+- Mobile-friendly design
+- A/B test subject lines"""
+            risk_level = 'low'
+            compliance_status = 'compliant'
+            
         else:
-            response = f"Here's a helpful response to your query: '{prompt}'. This is an AI-generated response and should be verified independently."
+            response = f"""Here's a helpful response to your query: '{prompt}'
+
+**General Information:**
+This is an AI-generated response designed to provide helpful information. Always verify important details from authoritative sources.
+
+**Best Practices:**
+- Cross-reference information
+- Check multiple sources
+- Consult experts when needed
+- Stay updated on latest developments
+
+This response has been processed through our governance system for quality and compliance."""
             risk_level = 'low'
             compliance_status = 'compliant'
         
@@ -151,7 +248,7 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
             'risk_assessment': {
                 'risk_level': risk_level,
                 'risk_score': 0.3 if risk_level == 'low' else 0.6 if risk_level == 'medium' else 0.9,
-                'risk_factors': ['content_analysis']
+                'risk_factors': ['content_analysis', 'domain_specific_risks']
             },
             'compliance_status': compliance_status,
             'audit_trail': [
@@ -162,7 +259,8 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
             'recommendations': [
                 'Always verify AI-generated information',
                 'Use appropriate disclaimers',
-                'Maintain audit trails'
+                'Maintain audit trails',
+                'Consult professionals for specialized advice'
             ]
         }
         
