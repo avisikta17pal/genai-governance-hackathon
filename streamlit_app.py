@@ -152,7 +152,37 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
             risk_level = 'medium'
             compliance_status = 'compliant'
             
-        elif 'medical' in prompt_lower or 'health' in prompt_lower:
+        elif ('marketing' in prompt_lower or 'email' in prompt_lower) and ('generate' in prompt_lower or 'create' in prompt_lower or 'write' in prompt_lower):
+            response = """**Marketing Email Template:**
+
+**Subject Line:** [Your Product] - Transform Your [Benefit]
+
+**Email Body:**
+Dear [Customer Name],
+
+We're excited to introduce [Your Product], designed to [main benefit].
+
+**Key Features:**
+- [Feature 1] - [Benefit]
+- [Feature 2] - [Benefit]
+- [Feature 3] - [Benefit]
+
+**Call to Action:** [Clear, compelling action]
+
+Best regards,
+[Your Name]
+[Company Name]
+
+**Tips for Effective Marketing:**
+- Personalize content
+- Clear value proposition
+- Strong call-to-action
+- Mobile-friendly design
+- A/B test subject lines"""
+            risk_level = 'low'
+            compliance_status = 'compliant'
+            
+        elif 'medical' in prompt_lower or ('health' in prompt_lower and 'care' not in prompt_lower):
             response = """I can provide general health information, but please consult a healthcare professional for specific medical advice. This is for informational purposes only.
 
 **For medical questions, I recommend:**
@@ -196,36 +226,6 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
             response = "I cannot provide assistance with harmful or violent content. Please ensure your requests are appropriate and comply with our usage policies."
             risk_level = 'high'
             compliance_status = 'blocked'
-            
-        elif 'marketing' in prompt_lower or 'email' in prompt_lower:
-            response = """**Marketing Email Template:**
-
-**Subject Line:** [Your Product] - Transform Your [Benefit]
-
-**Email Body:**
-Dear [Customer Name],
-
-We're excited to introduce [Your Product], designed to [main benefit].
-
-**Key Features:**
-- [Feature 1] - [Benefit]
-- [Feature 2] - [Benefit]
-- [Feature 3] - [Benefit]
-
-**Call to Action:** [Clear, compelling action]
-
-Best regards,
-[Your Name]
-[Company Name]
-
-**Tips for Effective Marketing:**
-- Personalize content
-- Clear value proposition
-- Strong call-to-action
-- Mobile-friendly design
-- A/B test subject lines"""
-            risk_level = 'low'
-            compliance_status = 'compliant'
             
         else:
             response = f"""Here's a helpful response to your query: '{prompt}'
