@@ -125,20 +125,48 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
         # Simulate different responses based on prompt content
         prompt_lower = prompt.lower()
 
-        # High-risk keywords detection
-        high_risk_keywords = [
-            "hack", "exploit", "phishing", "malware", "virus", "attack", "cyber", "illegal",
-            "bomb", "weapon", "kill", "violence", "harm", "backdoor", "breach", "ddos"
+        # Allow medical 'attack' phrases
+        medical_attack_phrases = [
+            "heart attack", "panic attack", "asthma attack", "migraine attack", "seizure attack"
         ]
-        if any(word in prompt_lower for word in high_risk_keywords):
-            response = (
-                "I cannot provide assistance with harmful, illegal, or dangerous content. "
-                "Please ensure your requests are appropriate and comply with our usage policies."
-            )
-            risk_level = 'high'
-            compliance_status = 'blocked'
+        if any(phrase in prompt_lower for phrase in medical_attack_phrases):
+            # Let it fall through to the medical info logic
+            pass
+        else:
+            # High-risk keywords detection
+            high_risk_keywords = [
+                "hack", "exploit", "phishing", "malware", "virus", "cyber", "illegal",
+                "bomb", "weapon", "kill", "violence", "harm", "backdoor", "breach", "ddos", "attack"
+            ]
+            if any(word in prompt_lower for word in high_risk_keywords):
+                response = (
+                    "I cannot provide assistance with harmful, illegal, or dangerous content. "
+                    "Please ensure your requests are appropriate and comply with our usage policies."
+                )
+                risk_level = 'high'
+                compliance_status = 'blocked'
+                return {
+                    'response': response,
+                    'risk_assessment': {
+                        'risk_level': risk_level,
+                        'risk_score': 0.9,
+                        'risk_factors': ['content_analysis', 'domain_specific_risks']
+                    },
+                    'compliance_status': compliance_status,
+                    'audit_trail': [
+                        {'agent': 'prompt_guard', 'status': 'completed'},
+                        {'agent': 'policy_enforcer', 'status': 'completed'},
+                        {'agent': 'output_auditor', 'status': 'completed'}
+                    ],
+                    'recommendations': [
+                        'Always verify AI-generated information',
+                        'Use appropriate disclaimers',
+                        'Maintain audit trails',
+                        'Consult professionals for specialized advice'
+                    ]
+                }
         
-        elif 'diabetes' in prompt_lower and ('symptom' in prompt_lower or 'treat' in prompt_lower):
+        if 'diabetes' in prompt_lower and ('symptom' in prompt_lower or 'treat' in prompt_lower):
             response = """**Diabetes Symptoms and Treatment Information:**
 
 **Common Symptoms:**
@@ -195,7 +223,7 @@ Best regards,
             risk_level = 'low'
             compliance_status = 'compliant'
             
-        elif 'medical' in prompt_lower or ('health' in prompt_lower and 'care' not in prompt_lower):
+        elif 'medical' in prompt_lower or ('health' in prompt_lower and 'care' not in prompt_lower) or any(phrase in prompt_lower for phrase in medical_attack_phrases):
             response = """I can provide general health information, but please consult a healthcare professional for specific medical advice. This is for informational purposes only.
 
 **For medical questions, I recommend:**
