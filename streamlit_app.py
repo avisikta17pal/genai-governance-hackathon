@@ -226,7 +226,45 @@ Best regards,
             compliance_status = 'compliant'
             
         elif 'medical' in prompt_lower or ('health' in prompt_lower and 'care' not in prompt_lower) or any(phrase in prompt_lower for phrase in medical_attack_phrases):
-            response = """I can provide general health information, but please consult a healthcare professional for specific medical advice. This is for informational purposes only.
+            # Check for specific medical conditions
+            if 'heart attack' in prompt_lower and ('symptom' in prompt_lower or 'sign' in prompt_lower):
+                response = """**Heart Attack Symptoms and Information:**
+
+**Common Symptoms:**
+- **Chest Pain/Pressure**: Feeling of tightness, pressure, or squeezing in the center of the chest
+- **Pain Spreading**: Discomfort that spreads to arms, neck, jaw, or back
+- **Shortness of Breath**: Difficulty breathing, even at rest
+- **Cold Sweat**: Sudden cold, clammy skin
+- **Nausea/Vomiting**: Feeling sick to stomach
+- **Lightheadedness**: Dizziness or feeling faint
+- **Fatigue**: Unusual tiredness, especially in women
+
+**Emergency Signs (Call 911 Immediately):**
+- Chest pain lasting more than 5 minutes
+- Pain spreading to arms, neck, or jaw
+- Shortness of breath with chest discomfort
+- Cold sweat, nausea, or lightheadedness
+
+**Risk Factors:**
+- High blood pressure
+- High cholesterol
+- Smoking
+- Diabetes
+- Family history
+- Age (men over 45, women over 55)
+
+**Prevention:**
+- Regular exercise
+- Healthy diet (low sodium, low fat)
+- Quit smoking
+- Manage stress
+- Regular check-ups
+
+⚠️ **Important Disclaimer:** This is general educational information only. If you experience these symptoms, call emergency services immediately. Always consult a healthcare professional for proper diagnosis and treatment."""
+                risk_level = 'medium'
+                compliance_status = 'compliant'
+            else:
+                response = """I can provide general health information, but please consult a healthcare professional for specific medical advice. This is for informational purposes only.
 
 **For medical questions, I recommend:**
 - Consulting your primary care physician
@@ -235,9 +273,9 @@ Best regards,
 - Calling emergency services for urgent concerns
 
 ⚠️ **Medical Disclaimer:** This information is for educational purposes only and should not replace professional medical advice."""
-            risk_level = 'medium'
-            compliance_status = 'needs_review'
-            
+                risk_level = 'medium'
+                compliance_status = 'needs_review'
+        
         elif 'financial' in prompt_lower or 'investment' in prompt_lower:
             response = """I can provide general financial education, but please consult a licensed financial advisor for specific investment advice. Past performance does not guarantee future results.
 
