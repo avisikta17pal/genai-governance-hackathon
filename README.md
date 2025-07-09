@@ -121,7 +121,7 @@ streamlit run app.py
 ## 🌐 **Streamlit Community Cloud Deployment**
 
 ### **Live Demo**
-- **🌐 Streamlit App**: [Deployed on Streamlit Cloud](https://genai-governance-hackathon-cnyxdc5iqhcgbmzuj3jfss.streamlit.app)
+- **🌐 Streamlit App**: [Deployed on Streamlit Cloud](https://genai-governance-hackathon-lxr5wqhhnjdyztacghlpux.streamlit.app/)
 - **📁 GitHub Repository**: https://github.com/avisikta17pal/genai-governance-hackathon
 - **🔧 Main File**: `streamlit_app.py`
 
