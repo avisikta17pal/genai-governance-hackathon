@@ -326,31 +326,31 @@ class OutputAuditorAgent:
             logger.error(f"Error in Bedrock content moderation: {str(e)}")
             
             # Fallback to keyword-based moderation
-            response_lower = ai_response.lower()
-            flags = []
-            risk_categories = {
-                "hate_speech": ["hate", "racist", "discriminatory", "prejudice"],
-                "violence": ["violence", "harm", "hurt", "kill", "weapon"],
-                "misinformation": ["fake news", "conspiracy", "unverified", "rumor"],
-                "inappropriate": ["inappropriate", "offensive", "vulgar", "explicit"],
-            }
+        response_lower = ai_response.lower()
+        flags = []
+        risk_categories = {
+            "hate_speech": ["hate", "racist", "discriminatory", "prejudice"],
+            "violence": ["violence", "harm", "hurt", "kill", "weapon"],
+            "misinformation": ["fake news", "conspiracy", "unverified", "rumor"],
+            "inappropriate": ["inappropriate", "offensive", "vulgar", "explicit"],
+        }
 
-            for category, keywords in risk_categories.items():
-                for keyword in keywords:
-                    if keyword in response_lower:
-                        flags.append(f"{category}: {keyword}")
+        for category, keywords in risk_categories.items():
+            for keyword in keywords:
+                if keyword in response_lower:
+                    flags.append(f"{category}: {keyword}")
 
-            return {
-                "flags": flags,
-                "risk_level": "high"
-                if len(flags) > 3
-                else "medium"
-                if len(flags) > 1
-                else "low",
-                "flagged_categories": list(set([flag.split(":")[0] for flag in flags])),
+        return {
+            "flags": flags,
+            "risk_level": "high"
+            if len(flags) > 3
+            else "medium"
+            if len(flags) > 1
+            else "low",
+            "flagged_categories": list(set([flag.split(":")[0] for flag in flags])),
                 "source": "aws_bedrock_fallback",
                 "error": str(e),
-            }
+        }
 
     async def _generate_audit_report(
         self,
