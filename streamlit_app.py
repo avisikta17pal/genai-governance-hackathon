@@ -81,6 +81,8 @@ if 'user_info' not in st.session_state:
     st.session_state.user_info = {}
 if 'session_id' not in st.session_state:
     st.session_state.session_id = None
+if 'audit_logs' not in st.session_state:
+    st.session_state.audit_logs = []
 
 # Backend API configuration
 BACKEND_URL = "http://localhost:8000"
@@ -88,6 +90,23 @@ BACKEND_URL = "http://localhost:8000"
 # Check if running in Streamlit Cloud
 import os
 DEMO_MODE = os.getenv("DEMO_MODE", "true").lower() == "true"
+
+def log_audit_event(action: str, user_id: str, risk_level: str = 'low', compliance_status: str = 'compliant', details: str = ''):
+    """Log audit events"""
+    audit_event = {
+        'timestamp': datetime.utcnow().isoformat(),
+        'user_id': user_id,
+        'action': action,
+        'risk_level': risk_level,
+        'compliance_status': compliance_status,
+        'session_id': st.session_state.session_id,
+        'details': details
+    }
+    
+    if 'audit_logs' not in st.session_state:
+        st.session_state.audit_logs = []
+    
+    st.session_state.audit_logs.append(audit_event)
 
 def login_user(username: str, password: str) -> bool:
     """Authenticate user with backend"""
@@ -107,8 +126,26 @@ def login_user(username: str, password: str) -> bool:
             st.session_state.authenticated = True
             st.session_state.user_info = user_info
             st.session_state.session_id = f"session_{int(time.time())}"
+            
+            # Log the login event
+            log_audit_event(
+                action='user_login',
+                user_id=user_info['user_id'],
+                risk_level='low',
+                compliance_status='compliant',
+                details=f'User {username} logged in successfully'
+            )
+            
             return True
         else:
+            # Log failed login attempt
+            log_audit_event(
+                action='login_failed',
+                user_id='unknown',
+                risk_level='medium',
+                compliance_status='needs_review',
+                details=f'Failed login attempt for username: {username}'
+            )
             return False
             
     except Exception as e:
@@ -709,6 +746,15 @@ This topic involves multiple aspects that work together to achieve desired outco
                 risk_level = 'low'
                 compliance_status = 'compliant'
         
+        # Log the AI interaction
+        log_audit_event(
+            action='genai_interaction',
+            user_id=user_info.get('user_id', 'unknown'),
+            risk_level=risk_level,
+            compliance_status=compliance_status,
+            details=f'AI interaction: {prompt[:50]}...'
+        )
+        
         return {
             'response': response,
             'risk_assessment': {
@@ -880,33 +926,22 @@ def show_audit_logs():
     """Show audit logs"""
     st.markdown('<h2 class="sub-header">📋 Audit Logs</h2>', unsafe_allow_html=True)
     
-    # Simulate audit logs
-    audit_logs = [
-        {
-            'timestamp': '2024-01-15T10:30:00Z',
-            'user_id': 'user_001',
-            'action': 'genai_interaction',
-            'risk_level': 'low',
-            'compliance_status': 'compliant',
-            'session_id': 'session_123'
-        },
-        {
-            'timestamp': '2024-01-15T10:25:00Z',
-            'user_id': 'admin_001',
-            'action': 'policy_update',
-            'risk_level': 'medium',
-            'compliance_status': 'needs_review',
-            'session_id': 'session_124'
-        },
-        {
-            'timestamp': '2024-01-15T10:20:00Z',
-            'user_id': 'user_002',
-            'action': 'genai_interaction',
-            'risk_level': 'high',
-            'compliance_status': 'blocked',
-            'session_id': 'session_125'
-        }
-    ]
+    # Get real audit logs from session state
+    audit_logs = st.session_state.get('audit_logs', [])
+    
+    # Add some sample data if no logs exist yet
+    if not audit_logs:
+        audit_logs = [
+            {
+                'timestamp': datetime.utcnow().isoformat(),
+                'user_id': 'system',
+                'action': 'system_startup',
+                'risk_level': 'low',
+                'compliance_status': 'compliant',
+                'session_id': 'system_session',
+                'details': 'System initialized successfully'
+            }
+        ]
     
     # Create DataFrame
     df = pd.DataFrame(audit_logs)
@@ -1062,6 +1097,15 @@ def main():
         
         # Logout button
         if st.sidebar.button("Logout"):
+            # Log the logout event
+            log_audit_event(
+                action='user_logout',
+                user_id=st.session_state.user_info.get('user_id', 'unknown'),
+                risk_level='low',
+                compliance_status='compliant',
+                details='User logged out successfully'
+            )
+            
             st.session_state.authenticated = False
             st.session_state.user_info = {}
             st.session_state.session_id = None
