@@ -225,6 +225,256 @@ Best regards,
             risk_level = 'low'
             compliance_status = 'compliant'
             
+        # Smartphone buying tips
+        elif 'smartphone' in prompt_lower and ('buy' in prompt_lower or 'tip' in prompt_lower):
+            response = """**Best Smartphone Buying Tips:**
+
+**1. Determine Your Budget:**
+- Set a realistic budget range
+- Consider total cost of ownership (phone + plan)
+
+**2. Choose Your Operating System:**
+- **iOS (iPhone)**: Seamless ecosystem, regular updates, premium feel
+- **Android**: More variety, customization options, different price points
+
+**3. Key Features to Consider:**
+- **Camera Quality**: Check megapixels, aperture, and reviews
+- **Battery Life**: Look for 4000mAh+ for all-day use
+- **Storage**: 128GB minimum, 256GB+ recommended
+- **RAM**: 6GB+ for smooth performance
+- **Display**: OLED/AMOLED for better colors, 90Hz+ for smooth scrolling
+
+**4. Research Before Buying:**
+- Read expert reviews (GSMArena, The Verge, TechRadar)
+- Check user reviews on Amazon, Best Buy
+- Compare specs on comparison sites
+- Watch YouTube reviews for real-world testing
+
+**5. Best Time to Buy:**
+- Black Friday/Cyber Monday
+- New model releases (older models get discounted)
+- Carrier promotions and trade-in deals
+
+**6. Popular Options by Budget:**
+- **Budget ($200-400)**: Samsung Galaxy A series, Google Pixel 6a
+- **Mid-range ($400-700)**: iPhone SE, Samsung Galaxy S series, Google Pixel 7
+- **Premium ($700+)**: iPhone 15 Pro, Samsung Galaxy S24 Ultra, Google Pixel 8 Pro
+
+**7. Don't Forget:**
+- Screen protector and case
+- Extended warranty for expensive phones
+- Check carrier compatibility
+- Consider refurbished options for savings
+
+⚠️ **Disclaimer:** This is general advice. Always research specific models and read recent reviews before purchasing."""
+            risk_level = 'low'
+            compliance_status = 'compliant'
+            
+        elif 'heart attack' in prompt_lower and 'symptom' in prompt_lower:
+            response = """**Heart Attack Symptoms and Information:**
+
+**Common Symptoms:**
+- **Chest Pain/Pressure**: Feeling of tightness, pressure, or squeezing in the center of the chest
+- **Pain Spreading**: Discomfort that spreads to arms, neck, jaw, or back
+- **Shortness of Breath**: Difficulty breathing, even at rest
+- **Cold Sweat**: Sudden cold, clammy skin
+- **Nausea/Vomiting**: Feeling sick to stomach
+- **Lightheadedness**: Dizziness or feeling faint
+- **Fatigue**: Unusual tiredness, especially in women
+
+**Emergency Signs (Call 911 Immediately):**
+- Chest pain lasting more than 5 minutes
+- Pain spreading to arms, neck, or jaw
+- Shortness of breath with chest discomfort
+- Cold sweat, nausea, or lightheadedness
+
+**Risk Factors:**
+- High blood pressure
+- High cholesterol
+- Smoking
+- Diabetes
+- Family history
+- Age (men over 45, women over 55)
+
+**Prevention:**
+- Regular exercise
+- Healthy diet (low sodium, low fat)
+- Quit smoking
+- Manage stress
+- Regular check-ups
+
+⚠️ **Important Disclaimer:** This is general educational information only. If you experience these symptoms, call emergency services immediately. Always consult a healthcare professional for proper diagnosis and treatment."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        elif 'diabetes' in prompt_lower and ('symptom' in prompt_lower or 'treat' in prompt_lower):
+            response = """**Diabetes Symptoms and Treatment Information:**
+
+**Common Symptoms:**
+- Frequent urination (polyuria)
+- Increased thirst (polydipsia)
+- Unexplained weight loss
+- Fatigue and weakness
+- Blurred vision
+- Slow-healing wounds
+- Tingling or numbness in hands/feet
+
+**Treatment Approaches:**
+- **Type 1 Diabetes**: Insulin therapy, blood sugar monitoring, diet management
+- **Type 2 Diabetes**: Lifestyle changes, oral medications, insulin if needed
+- **Gestational Diabetes**: Diet control, exercise, monitoring
+
+**Lifestyle Management:**
+- Regular exercise
+- Healthy diet (low glycemic index foods)
+- Blood sugar monitoring
+- Regular medical check-ups
+
+⚠️ **Important Disclaimer:** This is general educational information only. Always consult a healthcare professional for proper diagnosis and personalized treatment plans."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        elif 'depression' in prompt_lower and 'symptom' in prompt_lower:
+            response = """**Depression Symptoms and Information:**
+
+**Common Symptoms:**
+- **Persistent Sadness**: Feeling sad, empty, or hopeless most of the day
+- **Loss of Interest**: No longer enjoying activities you used to love
+- **Changes in Appetite**: Significant weight loss or gain, changes in eating habits
+- **Sleep Problems**: Insomnia or sleeping too much
+- **Fatigue**: Feeling tired and having little energy
+- **Difficulty Concentrating**: Trouble thinking, making decisions, or remembering
+- **Feelings of Worthlessness**: Excessive guilt or feeling like a failure
+- **Thoughts of Death**: Recurrent thoughts of death or suicide
+
+**Physical Symptoms:**
+- Slowed movements or speech
+- Unexplained aches and pains
+- Digestive problems
+- Headaches or migraines
+
+**Risk Factors:**
+- Family history of depression
+- Major life changes or stress
+- Medical conditions
+- Certain medications
+- Substance abuse
+
+**When to Seek Help:**
+- Symptoms lasting more than 2 weeks
+- Symptoms interfering with daily life
+- Thoughts of self-harm or suicide
+- Difficulty functioning at work or school
+
+**Treatment Options:**
+- **Therapy**: Cognitive behavioral therapy (CBT), talk therapy
+- **Medication**: Antidepressants (prescribed by healthcare provider)
+- **Lifestyle Changes**: Exercise, healthy diet, stress management
+- **Support Groups**: Connecting with others experiencing similar challenges
+
+**Crisis Resources:**
+- **National Suicide Prevention Lifeline**: 988 (US)
+- **Crisis Text Line**: Text HOME to 741741
+- **Emergency Services**: 911 for immediate danger
+
+⚠️ **Important Disclaimer:** This is general educational information only. Depression is a serious medical condition that requires professional diagnosis and treatment. If you're experiencing these symptoms, please consult a mental health professional immediately."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        elif 'anxiety' in prompt_lower and ('symptom' in prompt_lower or 'attack' in prompt_lower):
+            response = """**Anxiety Symptoms and Information:**
+
+**Common Symptoms:**
+- **Excessive Worry**: Persistent, uncontrollable worry about everyday things
+- **Restlessness**: Feeling on edge, restless, or keyed up
+- **Fatigue**: Easily tired, even without physical exertion
+- **Difficulty Concentrating**: Mind going blank, trouble focusing
+- **Irritability**: Easily annoyed or irritable
+- **Muscle Tension**: Tense muscles, aches, or soreness
+- **Sleep Problems**: Trouble falling or staying asleep, restless sleep
+
+**Physical Symptoms:**
+- **Rapid Heartbeat**: Heart racing or pounding
+- **Shortness of Breath**: Feeling like you can't get enough air
+- **Sweating**: Excessive sweating, especially hands
+- **Trembling**: Shaking or trembling
+- **Dizziness**: Feeling lightheaded or faint
+- **Nausea**: Upset stomach or feeling sick
+- **Hot Flashes**: Sudden feeling of heat
+
+**Panic Attack Symptoms:**
+- Sudden, intense fear or discomfort
+- Chest pain or discomfort
+- Feeling of choking
+- Nausea or abdominal distress
+- Feeling detached from reality
+- Fear of losing control or dying
+
+**Types of Anxiety Disorders:**
+- **Generalized Anxiety Disorder (GAD)**: Chronic worry about various things
+- **Panic Disorder**: Recurrent panic attacks
+- **Social Anxiety**: Fear of social situations
+- **Specific Phobias**: Intense fear of specific objects or situations
+
+**Coping Strategies:**
+- **Deep Breathing**: Slow, controlled breathing exercises
+- **Progressive Muscle Relaxation**: Tense and relax muscle groups
+- **Mindfulness**: Focus on present moment
+- **Regular Exercise**: Physical activity reduces anxiety
+- **Limit Caffeine**: Can worsen anxiety symptoms
+- **Get Enough Sleep**: 7-9 hours per night
+
+**When to Seek Help:**
+- Symptoms interfering with daily life
+- Panic attacks
+- Persistent worry for 6+ months
+- Physical symptoms without medical cause
+- Thoughts of self-harm
+
+⚠️ **Important Disclaimer:** This is general educational information only. Anxiety disorders are medical conditions that require professional diagnosis and treatment. If you're experiencing these symptoms, please consult a mental health professional."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        elif 'customer data' in prompt_lower and ('analyze' in prompt_lower or 'help' in prompt_lower):
+            response = """**Legal Customer Data Analysis Guidelines:**
+
+**✅ What You CAN Do:**
+- Analyze anonymized/aggregated data
+- Use data with proper consent
+- Follow GDPR/CCPA compliance
+- Implement data retention policies
+- Use secure data processing tools
+
+**❌ What You CANNOT Do:**
+- Process personal data without consent
+- Share identifiable customer information
+- Use data for unauthorized purposes
+- Retain data longer than necessary
+- Ignore data subject rights
+
+**Best Practices:**
+1. **Data Minimization**: Only collect what you need
+2. **Consent Management**: Clear, specific consent
+3. **Security Measures**: Encryption, access controls
+4. **Audit Trails**: Track all data processing
+5. **Regular Reviews**: Update privacy policies
+
+**Compliance Frameworks:**
+- **GDPR**: EU data protection
+- **CCPA**: California privacy law
+- **HIPAA**: Healthcare data (if applicable)
+- **SOX**: Financial data controls
+
+**Recommended Tools:**
+- Data anonymization software
+- Consent management platforms
+- Privacy impact assessments
+- Regular compliance audits
+
+⚠️ **Disclaimer:** This is general guidance. Consult legal professionals for specific compliance requirements."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
         elif 'medical' in prompt_lower or ('health' in prompt_lower and 'care' not in prompt_lower) or any(phrase in prompt_lower for phrase in medical_attack_phrases):
             # Check for specific medical conditions
             if 'heart attack' in prompt_lower and ('symptom' in prompt_lower or 'sign' in prompt_lower):
