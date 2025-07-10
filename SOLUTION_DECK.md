@@ -321,7 +321,7 @@ A comprehensive 6-agent governance system that screens prompts, enforces policie
 ### Demo & Access Information
 
 #### Live Demo
-- **Demo URL**: https://genai-governance-hackathon-cnyxdc5iqhcgbmzuj3jfss.streamlit.app/
+- **Demo URL**: https://genai-governance-hackathon-lxr5wqhhnjdyztacghlpux.streamlit.app/
 - **Status**: Live and fully functional
 - **Features**: Complete multi-agent governance system
 

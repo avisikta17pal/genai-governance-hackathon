@@ -6,7 +6,7 @@ Watch the full project demo on YouTube: [https://youtu.be/oZMM-Jwpxeo](https://y
 
 ## 🚀 Quick Reference for Judges
 
-- **Live Demo**: https://genai-governance-hackathon-cnyxdc5iqhcgbmzuj3jfss.streamlit.app/
+- **Live Demo**: https://genai-governance-hackathon-lxr5wqhhnjdyztacghlpux.streamlit.app/
 - **GitHub**: https://github.com/avisikta17pal/genai-governance-hackathon
 - **Demo Credentials**: admin/admin, manager/manager, analyst/analyst, user/user
 - **YouTube Demo**: https://youtu.be/oZMM-Jwpxeo
@@ -128,7 +128,7 @@ streamlit run app.py
 ## 🌐 **Streamlit Community Cloud Deployment**
 
 ### **Live Demo**
-- **🌐 Streamlit App**: [Deployed on Streamlit Cloud](https://genai-governance-hackathon-cnyxdc5iqhcgbmzuj3jfss.streamlit.app/)
+- **🌐 Streamlit App**: [Deployed on Streamlit Cloud](https://genai-governance-hackathon-lxr5wqhhnjdyztacghlpux.streamlit.app/)
 - **📁 GitHub Repository**: https://github.com/avisikta17pal/genai-governance-hackathon
 - **🔧 Main File**: `streamlit_app.py`
 
@@ -466,7 +466,7 @@ For questions or issues during the hackathon:
 - **Backend Issues**: Check http://localhost:8000/health
 - **Frontend Issues**: Restart Streamlit with `streamlit run app.py`
 - **Documentation**: See `FINAL_SETUP_GUIDE.md` for troubleshooting
-- **Live Demo**: https://genai-governance-hackathon-cnyxdc5iqhcgbmzuj3jfss.streamlit.app/
+- **Live Demo**: https://genai-governance-hackathon-lxr5wqhhnjdyztacghlpux.streamlit.app/
 
 **You're ready to win! 🏆**
 
