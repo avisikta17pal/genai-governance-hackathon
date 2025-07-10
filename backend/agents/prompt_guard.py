@@ -128,6 +128,12 @@ class PromptGuardAgent:
             "marketing email template",
             "create marketing email",
             "write marketing content",
+            "depression symptoms",
+            "anxiety symptoms",
+            "mental health symptoms",
+            "panic attack symptoms",
+            "depression help",
+            "anxiety help",
         ]
 
     async def analyze_prompt(

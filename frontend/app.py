@@ -261,6 +261,107 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
             risk_level = 'medium'
             compliance_status = 'compliant'
             
+        elif 'depression' in prompt_lower and 'symptom' in prompt_lower:
+            response = """**Depression Symptoms and Information:**
+
+**Common Symptoms:**
+- **Persistent Sadness**: Feeling sad, empty, or hopeless most of the day
+- **Loss of Interest**: No longer enjoying activities you used to love
+- **Changes in Appetite**: Significant weight loss or gain, changes in eating habits
+- **Sleep Problems**: Insomnia or sleeping too much
+- **Fatigue**: Feeling tired and having little energy
+- **Difficulty Concentrating**: Trouble thinking, making decisions, or remembering
+- **Feelings of Worthlessness**: Excessive guilt or feeling like a failure
+- **Thoughts of Death**: Recurrent thoughts of death or suicide
+
+**Physical Symptoms:**
+- Slowed movements or speech
+- Unexplained aches and pains
+- Digestive problems
+- Headaches or migraines
+
+**Risk Factors:**
+- Family history of depression
+- Major life changes or stress
+- Medical conditions
+- Certain medications
+- Substance abuse
+
+**When to Seek Help:**
+- Symptoms lasting more than 2 weeks
+- Symptoms interfering with daily life
+- Thoughts of self-harm or suicide
+- Difficulty functioning at work or school
+
+**Treatment Options:**
+- **Therapy**: Cognitive behavioral therapy (CBT), talk therapy
+- **Medication**: Antidepressants (prescribed by healthcare provider)
+- **Lifestyle Changes**: Exercise, healthy diet, stress management
+- **Support Groups**: Connecting with others experiencing similar challenges
+
+**Crisis Resources:**
+- **National Suicide Prevention Lifeline**: 988 (US)
+- **Crisis Text Line**: Text HOME to 741741
+- **Emergency Services**: 911 for immediate danger
+
+⚠️ **Important Disclaimer:** This is general educational information only. Depression is a serious medical condition that requires professional diagnosis and treatment. If you're experiencing these symptoms, please consult a mental health professional immediately."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        elif 'anxiety' in prompt_lower and ('symptom' in prompt_lower or 'attack' in prompt_lower):
+            response = """**Anxiety Symptoms and Information:**
+
+**Common Symptoms:**
+- **Excessive Worry**: Persistent, uncontrollable worry about everyday things
+- **Restlessness**: Feeling on edge, restless, or keyed up
+- **Fatigue**: Easily tired, even without physical exertion
+- **Difficulty Concentrating**: Mind going blank, trouble focusing
+- **Irritability**: Easily annoyed or irritable
+- **Muscle Tension**: Tense muscles, aches, or soreness
+- **Sleep Problems**: Trouble falling or staying asleep, restless sleep
+
+**Physical Symptoms:**
+- **Rapid Heartbeat**: Heart racing or pounding
+- **Shortness of Breath**: Feeling like you can't get enough air
+- **Sweating**: Excessive sweating, especially hands
+- **Trembling**: Shaking or trembling
+- **Dizziness**: Feeling lightheaded or faint
+- **Nausea**: Upset stomach or feeling sick
+- **Hot Flashes**: Sudden feeling of heat
+
+**Panic Attack Symptoms:**
+- Sudden, intense fear or discomfort
+- Chest pain or discomfort
+- Feeling of choking
+- Nausea or abdominal distress
+- Feeling detached from reality
+- Fear of losing control or dying
+
+**Types of Anxiety Disorders:**
+- **Generalized Anxiety Disorder (GAD)**: Chronic worry about various things
+- **Panic Disorder**: Recurrent panic attacks
+- **Social Anxiety**: Fear of social situations
+- **Specific Phobias**: Intense fear of specific objects or situations
+
+**Coping Strategies:**
+- **Deep Breathing**: Slow, controlled breathing exercises
+- **Progressive Muscle Relaxation**: Tense and relax muscle groups
+- **Mindfulness**: Focus on present moment
+- **Regular Exercise**: Physical activity reduces anxiety
+- **Limit Caffeine**: Can worsen anxiety symptoms
+- **Get Enough Sleep**: 7-9 hours per night
+
+**When to Seek Help:**
+- Symptoms interfering with daily life
+- Panic attacks
+- Persistent worry for 6+ months
+- Physical symptoms without medical cause
+- Thoughts of self-harm
+
+⚠️ **Important Disclaimer:** This is general educational information only. Anxiety disorders are medical conditions that require professional diagnosis and treatment. If you're experiencing these symptoms, please consult a mental health professional."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
         elif ('marketing' in prompt_lower or 'email' in prompt_lower) and ('generate' in prompt_lower or 'create' in prompt_lower or 'write' in prompt_lower):
             response = """**Marketing Email Template:**
 
