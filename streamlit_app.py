@@ -472,6 +472,141 @@ Best regards,
             risk_level = 'medium'
             compliance_status = 'compliant'
             
+        elif 'cancer' in prompt_lower and 'symptom' in prompt_lower:
+            response = """**Cancer Symptoms and Warning Signs:**
+
+**General Cancer Symptoms:**
+- **Unexplained Weight Loss**: Losing 10+ pounds without trying
+- **Fatigue**: Extreme tiredness that doesn't improve with rest
+- **Pain**: Persistent pain that doesn't go away
+- **Skin Changes**: New moles, changes in existing moles, or skin lesions
+- **Lumps or Swelling**: New lumps or bumps anywhere on the body
+- **Changes in Bowel/Bladder Habits**: Persistent changes in bathroom habits
+- **Persistent Cough**: Cough that doesn't go away or gets worse
+- **Difficulty Swallowing**: Trouble eating or feeling food stuck
+- **Unusual Bleeding**: Bleeding from any part of the body
+- **Night Sweats**: Excessive sweating at night
+
+**Specific Cancer Types:**
+
+**Breast Cancer:**
+- Lump in breast or underarm
+- Changes in breast size or shape
+- Nipple discharge or changes
+- Skin dimpling or puckering
+
+**Lung Cancer:**
+- Persistent cough
+- Chest pain
+- Shortness of breath
+- Coughing up blood
+- Hoarseness
+
+**Colon Cancer:**
+- Changes in bowel habits
+- Blood in stool
+- Abdominal pain
+- Unexplained weight loss
+- Fatigue
+
+**Prostate Cancer:**
+- Frequent urination
+- Weak urine flow
+- Blood in urine
+- Erectile dysfunction
+- Bone pain
+
+**Skin Cancer:**
+- New moles or growths
+- Changes in existing moles
+- Sores that don't heal
+- Unusual skin patches
+
+**Risk Factors:**
+- **Age**: Risk increases with age
+- **Family History**: Genetic predisposition
+- **Lifestyle**: Smoking, alcohol, poor diet
+- **Environmental**: Exposure to chemicals, radiation
+- **Medical History**: Previous cancer, certain conditions
+
+**When to See a Doctor:**
+- Any symptom lasting 2+ weeks
+- Unexplained weight loss
+- Persistent pain
+- Changes in bodily functions
+- New lumps or growths
+- Unusual bleeding
+
+**Prevention:**
+- **Regular Check-ups**: Annual physical exams
+- **Screening Tests**: Age-appropriate cancer screenings
+- **Healthy Lifestyle**: Diet, exercise, no smoking
+- **Sun Protection**: Use sunscreen, avoid tanning
+- **Vaccinations**: HPV vaccine, hepatitis B vaccine
+
+**Early Detection Saves Lives:**
+- Many cancers are treatable when caught early
+- Regular screenings can detect cancer before symptoms
+- Know your family history and risk factors
+- Report any concerning symptoms promptly
+
+⚠️ **Important Disclaimer:** This is general educational information only. Cancer symptoms can vary widely and may indicate other conditions. If you experience any concerning symptoms, please consult a healthcare professional immediately for proper evaluation and diagnosis."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        elif 'stroke' in prompt_lower and 'symptom' in prompt_lower:
+            response = """**Stroke Symptoms - Remember FAST:**
+
+**F - Face Drooping:**
+- One side of the face droops or feels numb
+- Ask person to smile - is it uneven?
+
+**A - Arm Weakness:**
+- One arm feels weak or numb
+- Ask person to raise both arms - does one drift down?
+
+**S - Speech Difficulty:**
+- Slurred or strange speech
+- Difficulty understanding or speaking
+
+**T - Time to Call 911:**
+- Every minute counts!
+- Call emergency services immediately
+
+**Other Stroke Symptoms:**
+- **Sudden Numbness**: Face, arm, or leg on one side
+- **Confusion**: Trouble speaking or understanding
+- **Vision Problems**: Blurred or blackened vision
+- **Severe Headache**: Sudden, severe headache
+- **Dizziness**: Loss of balance or coordination
+- **Nausea**: Sudden nausea or vomiting
+
+**Risk Factors:**
+- **High Blood Pressure**: Leading cause
+- **Smoking**: Damages blood vessels
+- **Diabetes**: Increases risk
+- **High Cholesterol**: Clogs arteries
+- **Age**: Risk increases with age
+- **Family History**: Genetic predisposition
+
+**Prevention:**
+- **Control Blood Pressure**: Regular monitoring
+- **Quit Smoking**: Seek help to stop
+- **Manage Diabetes**: Keep blood sugar controlled
+- **Exercise Regularly**: 30+ minutes daily
+- **Healthy Diet**: Low sodium, high fiber
+- **Limit Alcohol**: Moderate consumption only
+
+**Emergency Response:**
+- **Call 911 Immediately**: Don't wait
+- **Note Time**: When symptoms started
+- **Stay Calm**: Keep person comfortable
+- **Don't Drive**: Let emergency services transport
+
+⚠️ **Emergency Warning:** If you or someone shows stroke symptoms, call 911 immediately. Time is critical for stroke treatment."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
         elif 'customer data' in prompt_lower and ('analyze' in prompt_lower or 'help' in prompt_lower):
             response = """**Legal Customer Data Analysis Guidelines:**
 
