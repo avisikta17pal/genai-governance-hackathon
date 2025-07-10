@@ -554,20 +554,160 @@ Best regards,
             compliance_status = 'needs_review'
             
         else:
-            response = f"""Here's a helpful response to your query: '{prompt}'
+            # Generate more dynamic responses based on query type
+            if 'how to' in prompt_lower or 'guide' in prompt_lower:
+                response = f"""**Step-by-Step Guide for: '{prompt}'**
 
-**General Information:**
-This is an AI-generated response designed to provide helpful information. Always verify important details from authoritative sources.
+**1. Research Phase:**
+- Gather relevant information from reliable sources
+- Identify key requirements and constraints
+- Create a structured plan
+
+**2. Implementation:**
+- Break down into manageable steps
+- Set realistic timelines
+- Monitor progress regularly
+
+**3. Quality Assurance:**
+- Test and validate results
+- Gather feedback
+- Iterate and improve
+
+**4. Best Practices:**
+- Document your process
+- Learn from mistakes
+- Stay updated with latest trends
+
+⚠️ **Disclaimer:** This is general guidance. Adapt to your specific needs and consult experts when necessary."""
+                risk_level = 'low'
+                compliance_status = 'compliant'
+                
+            elif 'what is' in prompt_lower or 'explain' in prompt_lower:
+                response = f"""**Explanation: '{prompt}'**
+
+**Definition:**
+This refers to a concept, process, or system that involves multiple components working together.
+
+**Key Components:**
+- Core elements and their functions
+- Relationships between components
+- Input and output processes
+- Quality control measures
+
+**Applications:**
+- Real-world use cases
+- Industry applications
+- Benefits and advantages
+- Potential challenges
 
 **Best Practices:**
-- Cross-reference information
-- Check multiple sources
-- Consult experts when needed
-- Stay updated on latest developments
+- Understand fundamentals first
+- Practice with examples
+- Stay updated with developments
+- Network with experts
 
-This response has been processed through our governance system for quality and compliance."""
-            risk_level = 'low'
-            compliance_status = 'compliant'
+⚠️ **Disclaimer:** This is educational information. For specific applications, consult relevant professionals."""
+                risk_level = 'low'
+                compliance_status = 'compliant'
+                
+            elif 'compare' in prompt_lower or 'difference' in prompt_lower:
+                response = f"""**Comparison Analysis: '{prompt}'**
+
+**Key Differences:**
+
+**Option A:**
+- Strengths and advantages
+- Use cases and applications
+- Limitations and drawbacks
+
+**Option B:**
+- Strengths and advantages
+- Use cases and applications
+- Limitations and drawbacks
+
+**Decision Factors:**
+- Cost considerations
+- Time requirements
+- Resource availability
+- Long-term implications
+
+**Recommendation Framework:**
+- Define your specific needs
+- Evaluate against criteria
+- Consider trade-offs
+- Plan for implementation
+
+⚠️ **Disclaimer:** This comparison is general. Consider your specific context and requirements."""
+                risk_level = 'low'
+                compliance_status = 'compliant'
+                
+            elif 'tips' in prompt_lower or 'advice' in prompt_lower:
+                response = f"""**Pro Tips for: '{prompt}'**
+
+**Essential Tips:**
+1. **Start with the basics** - Master fundamentals first
+2. **Practice consistently** - Regular practice builds skills
+3. **Learn from experts** - Follow industry leaders
+4. **Stay updated** - Keep current with latest trends
+5. **Network actively** - Connect with like-minded professionals
+
+**Advanced Strategies:**
+- **Optimization techniques** for better results
+- **Time management** for efficiency
+- **Quality control** measures
+- **Continuous improvement** mindset
+
+**Common Mistakes to Avoid:**
+- Rushing without proper planning
+- Ignoring feedback and criticism
+- Not staying updated with changes
+- Working in isolation
+
+**Success Metrics:**
+- Define clear goals
+- Track progress regularly
+- Celebrate small wins
+- Learn from setbacks
+
+⚠️ **Disclaimer:** These tips are general guidance. Adapt to your specific situation."""
+                risk_level = 'low'
+                compliance_status = 'compliant'
+                
+            else:
+                response = f"""**Comprehensive Response to: '{prompt}'**
+
+**Overview:**
+This topic involves multiple aspects that work together to achieve desired outcomes.
+
+**Key Components:**
+- **Core Elements**: Fundamental building blocks
+- **Processes**: Step-by-step procedures
+- **Tools**: Resources and technologies
+- **Outcomes**: Expected results and benefits
+
+**Implementation Strategy:**
+1. **Assessment Phase**: Evaluate current state
+2. **Planning Phase**: Design approach and timeline
+3. **Execution Phase**: Implement with monitoring
+4. **Review Phase**: Evaluate and optimize
+
+**Best Practices:**
+- Start with clear objectives
+- Use proven methodologies
+- Monitor progress regularly
+- Adapt to changing circumstances
+- Document lessons learned
+
+**Success Factors:**
+- Strong foundation and preparation
+- Consistent effort and dedication
+- Continuous learning and improvement
+- Collaboration and teamwork
+- Quality focus and attention to detail
+
+⚠️ **Disclaimer:** This is general information. For specific applications, consult relevant experts and consider your unique circumstances."""
+                risk_level = 'low'
+                compliance_status = 'compliant'
         
         return {
             'response': response,
