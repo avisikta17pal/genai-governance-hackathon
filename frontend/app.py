@@ -114,25 +114,236 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
         
         # Simulate different responses based on prompt content
         prompt_lower = prompt.lower()
-        
-        if 'medical' in prompt_lower or 'health' in prompt_lower:
-            response = "I can provide general health information, but please consult a healthcare professional for specific medical advice. This is for informational purposes only."
-            risk_level = 'medium'
-            compliance_status = 'needs_review'
-        elif 'financial' in prompt_lower or 'investment' in prompt_lower:
-            response = "I can provide general financial education, but please consult a licensed financial advisor for specific investment advice. Past performance does not guarantee future results."
-            risk_level = 'medium'
-            compliance_status = 'needs_review'
-        elif 'legal' in prompt_lower or 'law' in prompt_lower:
-            response = "I can provide general legal information, but please consult a licensed attorney for specific legal advice. This is for informational purposes only."
-            risk_level = 'medium'
-            compliance_status = 'needs_review'
-        elif 'harm' in prompt_lower or 'violence' in prompt_lower:
-            response = "I cannot provide assistance with harmful or violent content. Please ensure your requests are appropriate and comply with our usage policies."
-            risk_level = 'high'
-            compliance_status = 'blocked'
+
+        # Allow medical 'attack' phrases
+        medical_attack_phrases = [
+            "heart attack", "panic attack", "asthma attack", "migraine attack", "seizure attack"
+        ]
+        if any(phrase in prompt_lower for phrase in medical_attack_phrases):
+            # Let it fall through to the medical info logic
+            pass
         else:
-            response = f"Here's a helpful response to your query: '{prompt}'. This is an AI-generated response and should be verified independently."
+            # High-risk keywords detection
+            high_risk_keywords = [
+                "hack", "exploit", "phishing", "malware", "virus", "cyber", "illegal",
+                "bomb", "weapon", "kill", "violence", "harm", "backdoor", "breach", "ddos", "attack"
+            ]
+            if any(keyword in prompt_lower for keyword in high_risk_keywords):
+                response = "I cannot provide assistance with potentially harmful or illegal activities. Please ensure your requests are appropriate and comply with our usage policies."
+                risk_level = 'high'
+                compliance_status = 'blocked'
+                return {
+                    'response': response,
+                    'risk_assessment': {
+                        'risk_level': risk_level,
+                        'risk_score': 0.9,
+                        'risk_factors': ['harmful_content_detected']
+                    },
+                    'compliance_status': compliance_status,
+                    'audit_trail': [
+                        {'agent': 'prompt_guard', 'status': 'blocked'},
+                        {'agent': 'policy_enforcer', 'status': 'blocked'},
+                        {'agent': 'output_auditor', 'status': 'blocked'}
+                    ],
+                    'recommendations': [
+                        'Review request for compliance',
+                        'Avoid harmful or illegal content',
+                        'Follow usage guidelines'
+                    ]
+                }
+        
+        # Smartphone buying tips
+        if 'smartphone' in prompt_lower and ('buy' in prompt_lower or 'tip' in prompt_lower):
+            response = """**Best Smartphone Buying Tips:**
+
+**1. Determine Your Budget:**
+- Set a realistic budget range
+- Consider total cost of ownership (phone + plan)
+
+**2. Choose Your Operating System:**
+- **iOS (iPhone)**: Seamless ecosystem, regular updates, premium feel
+- **Android**: More variety, customization options, different price points
+
+**3. Key Features to Consider:**
+- **Camera Quality**: Check megapixels, aperture, and reviews
+- **Battery Life**: Look for 4000mAh+ for all-day use
+- **Storage**: 128GB minimum, 256GB+ recommended
+- **RAM**: 6GB+ for smooth performance
+- **Display**: OLED/AMOLED for better colors, 90Hz+ for smooth scrolling
+
+**4. Research Before Buying:**
+- Read expert reviews (GSMArena, The Verge, TechRadar)
+- Check user reviews on Amazon, Best Buy
+- Compare specs on comparison sites
+- Watch YouTube reviews for real-world testing
+
+**5. Best Time to Buy:**
+- Black Friday/Cyber Monday
+- New model releases (older models get discounted)
+- Carrier promotions and trade-in deals
+
+**6. Popular Options by Budget:**
+- **Budget ($200-400)**: Samsung Galaxy A series, Google Pixel 6a
+- **Mid-range ($400-700)**: iPhone SE, Samsung Galaxy S series, Google Pixel 7
+- **Premium ($700+)**: iPhone 15 Pro, Samsung Galaxy S24 Ultra, Google Pixel 8 Pro
+
+**7. Don't Forget:**
+- Screen protector and case
+- Extended warranty for expensive phones
+- Check carrier compatibility
+- Consider refurbished options for savings
+
+⚠️ **Disclaimer:** This is general advice. Always research specific models and read recent reviews before purchasing."""
+            risk_level = 'low'
+            compliance_status = 'compliant'
+            
+        elif 'heart attack' in prompt_lower and 'symptom' in prompt_lower:
+            response = """**Heart Attack Symptoms and Information:**
+
+**Common Symptoms:**
+- **Chest Pain/Pressure**: Feeling of tightness, pressure, or squeezing in the center of the chest
+- **Pain Spreading**: Discomfort that spreads to arms, neck, jaw, or back
+- **Shortness of Breath**: Difficulty breathing, even at rest
+- **Cold Sweat**: Sudden cold, clammy skin
+- **Nausea/Vomiting**: Feeling sick to stomach
+- **Lightheadedness**: Dizziness or feeling faint
+- **Fatigue**: Unusual tiredness, especially in women
+
+**Emergency Signs (Call 911 Immediately):**
+- Chest pain lasting more than 5 minutes
+- Pain spreading to arms, neck, or jaw
+- Shortness of breath with chest discomfort
+- Cold sweat, nausea, or lightheadedness
+
+**Risk Factors:**
+- High blood pressure
+- High cholesterol
+- Smoking
+- Diabetes
+- Family history
+- Age (men over 45, women over 55)
+
+**Prevention:**
+- Regular exercise
+- Healthy diet (low sodium, low fat)
+- Quit smoking
+- Manage stress
+- Regular check-ups
+
+⚠️ **Important Disclaimer:** This is general educational information only. If you experience these symptoms, call emergency services immediately. Always consult a healthcare professional for proper diagnosis and treatment."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        elif 'diabetes' in prompt_lower and ('symptom' in prompt_lower or 'treat' in prompt_lower):
+            response = """**Diabetes Symptoms and Treatment Information:**
+
+**Common Symptoms:**
+- Frequent urination (polyuria)
+- Increased thirst (polydipsia)
+- Unexplained weight loss
+- Fatigue and weakness
+- Blurred vision
+- Slow-healing wounds
+- Tingling or numbness in hands/feet
+
+**Treatment Approaches:**
+- **Type 1 Diabetes**: Insulin therapy, blood sugar monitoring, diet management
+- **Type 2 Diabetes**: Lifestyle changes, oral medications, insulin if needed
+- **Gestational Diabetes**: Diet control, exercise, monitoring
+
+**Lifestyle Management:**
+- Regular exercise
+- Healthy diet (low glycemic index foods)
+- Blood sugar monitoring
+- Regular medical check-ups
+
+⚠️ **Important Disclaimer:** This is general educational information only. Always consult a healthcare professional for proper diagnosis and personalized treatment plans."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        elif ('marketing' in prompt_lower or 'email' in prompt_lower) and ('generate' in prompt_lower or 'create' in prompt_lower or 'write' in prompt_lower):
+            response = """**Marketing Email Template:**
+
+**Subject Line:** [Your Product] - Transform Your [Benefit]
+
+**Email Body:**
+Dear [Customer Name],
+
+We're excited to introduce [Your Product], designed to [main benefit].
+
+**Key Features:**
+- [Feature 1] - [Benefit]
+- [Feature 2] - [Benefit]
+- [Feature 3] - [Benefit]
+
+**Call to Action:** [Clear, compelling action]
+
+Best regards,
+[Your Name]
+[Company Name]
+
+**Tips for Effective Marketing:**
+- Personalize content
+- Clear value proposition
+- Strong call-to-action
+- Mobile-friendly design
+- A/B test subject lines"""
+            risk_level = 'low'
+            compliance_status = 'compliant'
+            
+        elif 'customer data' in prompt_lower and ('analyze' in prompt_lower or 'help' in prompt_lower):
+            response = """**Legal Customer Data Analysis Guidelines:**
+
+**✅ What You CAN Do:**
+- Analyze anonymized/aggregated data
+- Use data with proper consent
+- Follow GDPR/CCPA compliance
+- Implement data retention policies
+- Use secure data processing tools
+
+**❌ What You CANNOT Do:**
+- Process personal data without consent
+- Share identifiable customer information
+- Use data for unauthorized purposes
+- Retain data longer than necessary
+- Ignore data subject rights
+
+**Best Practices:**
+1. **Data Minimization**: Only collect what you need
+2. **Consent Management**: Clear, specific consent
+3. **Security Measures**: Encryption, access controls
+4. **Audit Trails**: Track all data processing
+5. **Regular Reviews**: Update privacy policies
+
+**Compliance Frameworks:**
+- **GDPR**: EU data protection
+- **CCPA**: California privacy law
+- **HIPAA**: Healthcare data (if applicable)
+- **SOX**: Financial data controls
+
+**Recommended Tools:**
+- Data anonymization software
+- Consent management platforms
+- Privacy impact assessments
+- Regular compliance audits
+
+⚠️ **Disclaimer:** This is general guidance. Consult legal professionals for specific compliance requirements."""
+            risk_level = 'medium'
+            compliance_status = 'compliant'
+            
+        else:
+            response = f"""Here's a helpful response to your query: '{prompt}'
+
+**General Information:**
+This is an AI-generated response designed to provide helpful information. Always verify important details from authoritative sources.
+
+**Best Practices:**
+- Cross-reference information
+- Check multiple sources
+- Consult experts when needed
+- Stay updated on latest developments
+
+This response has been processed through our governance system for quality and compliance."""
             risk_level = 'low'
             compliance_status = 'compliant'
         
@@ -141,7 +352,7 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
             'risk_assessment': {
                 'risk_level': risk_level,
                 'risk_score': 0.3 if risk_level == 'low' else 0.6 if risk_level == 'medium' else 0.9,
-                'risk_factors': ['content_analysis']
+                'risk_factors': ['content_analysis', 'domain_specific_risks']
             },
             'compliance_status': compliance_status,
             'audit_trail': [
@@ -152,7 +363,8 @@ def process_genai_request(prompt: str, user_info: Dict) -> Dict:
             'recommendations': [
                 'Always verify AI-generated information',
                 'Use appropriate disclaimers',
-                'Maintain audit trails'
+                'Maintain audit trails',
+                'Consult professionals for specialized advice'
             ]
         }
         
@@ -181,8 +393,8 @@ def get_analytics_data() -> Dict:
         'average_response_time': 145,
         'top_user_activities': [
             {'user_id': 'user_001', 'interactions': 45},
-            {'user_id': 'user_002', 'interactions': 32},
-            {'user_id': 'user_003', 'interactions': 28}
+            {'user_002', 'interactions': 32},
+            {'user_003', 'interactions': 28}
         ],
         'compliance_frameworks': {
             'gdpr': 0.95,

@@ -80,6 +80,18 @@ class OutputAuditorAgent:
             ],
         }
 
+        # Content that should be allowed with appropriate disclaimers
+        self.allowed_content_types = [
+            "educational",
+            "informational",
+            "guidance",
+            "tips",
+            "best practices",
+            "general advice",
+            "overview",
+            "introduction",
+        ]
+
     async def audit_output(
         self, original_prompt: str, ai_response: str, user_id: str
     ) -> Dict:
@@ -348,8 +360,7 @@ class OutputAuditorAgent:
             if len(flags) > 1
             else "low",
             "flagged_categories": list(set([flag.split(":")[0] for flag in flags])),
-                "source": "aws_bedrock_fallback",
-                "error": str(e),
+            "source": "aws_bedrock_fallback",
         }
 
     async def _generate_audit_report(
